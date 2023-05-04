@@ -25,7 +25,9 @@ from django.urls import path
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('', views.index_redirect, name='views_redirect'),
-    path('file/', include('file.urls')),
+    path('file', include('file.urls')),
+    path('shortener', include('urlshortener.urls')),
+    path('<str:shortened_part>', views.redirect_url_view, name='redirect_url'),
 ]
 
 if settings.DEBUG:
